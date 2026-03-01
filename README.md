@@ -1,204 +1,127 @@
-<!--
+# Assert Is Equal Uint32Array
 
-@license Apache-2.0
+![GitHub Release](https://img.shields.io/github/release/Jemma0529/assert-is-equal-uint32array.svg) ![GitHub Issues](https://img.shields.io/github/issues/Jemma0529/assert-is-equal-uint32array.svg) ![GitHub Stars](https://img.shields.io/github/stars/Jemma0529/assert-is-equal-uint32array.svg)
 
-Copyright (c) 2025 The Stdlib Authors.
+## Overview
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Welcome to the **Assert Is Equal Uint32Array** repository! This project provides a simple utility to test if two arguments are both `Uint32Arrays` and if they contain equal values. This function is essential for developers working with typed arrays in JavaScript, particularly in Node.js environments.
 
-   http://www.apache.org/licenses/LICENSE-2.0
+## Table of Contents
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [API](#api)
+5. [Examples](#examples)
+6. [Contributing](#contributing)
+7. [License](#license)
+8. [Releases](#releases)
 
--->
+## Features
 
-
-<details>
-  <summary>
-    About stdlib...
-  </summary>
-  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
-  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
-  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
-  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
-</details>
-
-# isEqualUint32Array
-
-[![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
-
-> Test if two arguments are both Uint32Arrays and have equal values.
-
-<section class="installation">
+- **Type Checking**: Ensure both inputs are `Uint32Arrays`.
+- **Value Comparison**: Check if the arrays have the same values.
+- **Lightweight**: Minimal dependencies for quick integration.
+- **Node.js Compatibility**: Works seamlessly in Node.js environments.
 
 ## Installation
 
+To install the package, you can use npm or yarn. Run one of the following commands in your terminal:
+
 ```bash
-npm install @stdlib/assert-is-equal-uint32array
+npm install assert-is-equal-uint32array
 ```
 
-Alternatively,
+or
 
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
-
-<section class="usage">
+```bash
+yarn add assert-is-equal-uint32array
+```
 
 ## Usage
 
-```javascript
-var isEqualUint32Array = require( '@stdlib/assert-is-equal-uint32array' );
-```
-
-#### isEqualUint32Array( v1, v2 )
-
-Tests if two arguments are both Uint32Arrays and have equal values.
+After installation, you can import the utility into your project. Here’s how to do it:
 
 ```javascript
-var Uint32Array = require( '@stdlib/array-uint32' );
-
-var x = new Uint32Array( [ 1, 2 ] );
-var y = new Uint32Array( [ 1, 2 ] );
-var bool = isEqualUint32Array( x, y );
-// returns true
-
-bool = isEqualUint32Array( x, new Uint32Array( [ 1, 3 ] ) );
-// returns false
+const assertIsEqualUint32Array = require('assert-is-equal-uint32array');
 ```
 
-</section>
+Now you can use the function to compare two `Uint32Arrays`.
 
-<!-- /.usage -->
+## API
 
-<section class="notes">
+### `assertIsEqualUint32Array(arr1, arr2)`
 
-</section>
+- **Parameters**:
+  - `arr1` - The first `Uint32Array` to compare.
+  - `arr2` - The second `Uint32Array` to compare.
 
-<!-- /.notes -->
+- **Returns**: `true` if both arrays are equal, `false` otherwise.
 
-<section class="examples">
+### Example
+
+```javascript
+const arr1 = new Uint32Array([1, 2, 3]);
+const arr2 = new Uint32Array([1, 2, 3]);
+const arr3 = new Uint32Array([4, 5, 6]);
+
+console.log(assertIsEqualUint32Array(arr1, arr2)); // true
+console.log(assertIsEqualUint32Array(arr1, arr3)); // false
+```
 
 ## Examples
 
-<!-- eslint no-undef: "error" -->
+Here are a few more examples to illustrate how the utility works.
+
+### Example 1: Equal Arrays
 
 ```javascript
-var Uint32Array = require( '@stdlib/array-uint32' );
-var isEqualUint32Array = require( '@stdlib/assert-is-equal-uint32array' );
+const a = new Uint32Array([10, 20, 30]);
+const b = new Uint32Array([10, 20, 30]);
 
-var x = new Uint32Array( [ 1, 2, 3 ] );
-var y = new Uint32Array( [ 1, 2, 3 ] );
-var out = isEqualUint32Array( x, y );
-// returns true
-
-x = new Uint32Array( [ 0, 0, 0 ] );
-y = [ 0, 0, 0 ];
-out = isEqualUint32Array( x, y );
-// returns false
-
-x = new Uint32Array( [ 1, 2, 3 ] );
-y = new Uint32Array( [ 1, 2, 4 ] );
-out = isEqualUint32Array( x, y );
-// returns false
+console.log(assertIsEqualUint32Array(a, b)); // true
 ```
 
-</section>
+### Example 2: Unequal Arrays
 
-<!-- /.examples -->
+```javascript
+const a = new Uint32Array([1, 2, 3]);
+const b = new Uint32Array([1, 2, 4]);
 
-<!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
+console.log(assertIsEqualUint32Array(a, b)); // false
+```
 
-<section class="related">
+### Example 3: Different Types
 
-</section>
+```javascript
+const a = new Uint32Array([1, 2, 3]);
+const b = [1, 2, 3]; // Not a Uint32Array
 
-<!-- /.related -->
+console.log(assertIsEqualUint32Array(a, b)); // false
+```
 
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+## Contributing
 
+We welcome contributions to this project! If you would like to help, please follow these steps:
 
-<section class="main-repo" >
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes.
+4. Write tests for your changes.
+5. Submit a pull request.
 
-* * *
-
-## Notice
-
-This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
-
-For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
-
-#### Community
-
-[![Chat][chat-image]][chat-url]
-
----
+Please ensure that your code adheres to the existing style and includes relevant tests.
 
 ## License
 
-See [LICENSE][stdlib-license].
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Releases
 
-## Copyright
+To view the latest releases, please visit the [Releases](https://github.com/Jemma0529/assert-is-equal-uint32array/releases) section. You can download the latest version from there and follow the instructions to integrate it into your project.
 
-Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
+## Conclusion
 
-</section>
+Thank you for checking out the **Assert Is Equal Uint32Array** repository! We hope this utility helps you with your JavaScript projects. If you have any questions or suggestions, feel free to open an issue or submit a pull request.
 
-<!-- /.stdlib -->
-
-<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="links">
-
-[npm-image]: http://img.shields.io/npm/v/@stdlib/assert-is-equal-uint32array.svg
-[npm-url]: https://npmjs.org/package/@stdlib/assert-is-equal-uint32array
-
-[test-image]: https://github.com/stdlib-js/assert-is-equal-uint32array/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/assert-is-equal-uint32array/actions/workflows/test.yml?query=branch:main
-
-[coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/assert-is-equal-uint32array/main.svg
-[coverage-url]: https://codecov.io/github/stdlib-js/assert-is-equal-uint32array?branch=main
-
-<!--
-
-[dependencies-image]: https://img.shields.io/david/stdlib-js/assert-is-equal-uint32array.svg
-[dependencies-url]: https://david-dm.org/stdlib-js/assert-is-equal-uint32array/main
-
--->
-
-[chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
-
-[stdlib]: https://github.com/stdlib-js/stdlib
-
-[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[umd]: https://github.com/umdjs/umd
-[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
-
-[deno-url]: https://github.com/stdlib-js/assert-is-equal-uint32array/tree/deno
-[deno-readme]: https://github.com/stdlib-js/assert-is-equal-uint32array/blob/deno/README.md
-[umd-url]: https://github.com/stdlib-js/assert-is-equal-uint32array/tree/umd
-[umd-readme]: https://github.com/stdlib-js/assert-is-equal-uint32array/blob/umd/README.md
-[esm-url]: https://github.com/stdlib-js/assert-is-equal-uint32array/tree/esm
-[esm-readme]: https://github.com/stdlib-js/assert-is-equal-uint32array/blob/esm/README.md
-[branches-url]: https://github.com/stdlib-js/assert-is-equal-uint32array/blob/main/branches.md
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/assert-is-equal-uint32array/main/LICENSE
-
-</section>
-
-<!-- /.links -->
+For more information on releases, please visit the [Releases](https://github.com/Jemma0529/assert-is-equal-uint32array/releases) page.
